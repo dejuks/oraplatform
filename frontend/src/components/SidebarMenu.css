@@ -1,0 +1,70 @@
+/* Sidebar background */
+.sidebar {
+  background-color: #1e282c; /* Darker sidebar */
+}
+
+/* Main menu links */
+.nav-sidebar .nav-link {
+  color: #c2c7d0;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+/* Active link */
+.nav-sidebar .nav-link.active {
+  background-color: #3c8dbc; /* Highlight active menu */
+  color: #fff;
+}
+
+/* Hover effect */
+.nav-sidebar .nav-link:hover {
+  background-color: #367fa9;
+  color: #fff;
+}
+
+/* Submenu treeview */
+.nav-sidebar .nav-treeview {
+  padding-left: 15px; /* Indent */
+  transition: all 0.3s;
+}
+
+/* Submenu links */
+.nav-sidebar .nav-treeview .nav-link {
+  color: #b8c7ce;
+  font-size: 0.95rem;
+}
+
+/* Submenu active */
+.nav-sidebar .nav-treeview .nav-link.active {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Submenu icons */
+.nav-sidebar .nav-treeview .nav-icon {
+  font-size: 0.8rem;
+}
+
+/* Angle icon for collapsible menus */
+.nav-sidebar .nav-link i.right.fas.fa-angle-left {
+  transition: transform 0.3s;
+}
+
+/* Rotate arrow when menu is open */
+.nav-item.menu-open > .nav-link i.right.fas.fa-angle-left {
+  transform: rotate(-90deg);
+}
+
+/* Badge style */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+.nav-sidebar .nav-treeview {
+  max-height: 0;
+  overflow: hidden;
+}
+
+.nav-item.menu-open > .nav-treeview {
+  max-height: 500px; /* enough to show submenu */
+}

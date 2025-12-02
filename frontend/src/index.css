@@ -1,0 +1,27 @@
+html,
+body,
+.wrapper {
+  height: 100%;
+}
+
+.content-wrapper {
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f4f6f9;
+}
+.nav-treeview {
+  padding-left: 1rem;
+}
+
+.nav-treeview.d-block {
+  display: block !important;
+}
+
+.nav-treeview.d-none {
+  display: none !important;
+}
+
+.nav-link.active {
+  background-color: #007bff !important;
+  color: #fff !important;
+}
