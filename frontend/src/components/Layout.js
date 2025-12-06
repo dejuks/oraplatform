@@ -1,20 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import SidebarMenu from "./SidebarMenu";
 
 const Layout = ({ children }) => {
+  const location = useLocation();
+    const hideSidebar = location.pathname.startsWith("/auth/login") || location.pathname === "/";
+
+  const [module, setModule] = useState("");
+
   useEffect(() => {
-    if (window.$) {
-      window.$(() => window.$(".nav-sidebar").each(function () {
-        window.$(this).treeview();
-      }));
-    }
+    // Determine current module based on URL
+    const path = location.pathname.split("/")[1]; // e.g., 'journal'
+    setModule(path);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (window.$) window.$(".nav-sidebar").treeview();
   }, []);
 
   return (
-    <div className="hold-transition sidebar-mini layout-fixed">
-      <div className="wrapper">
-
-        {/* NAVBAR */}
+    <div className="wrapper hold-transition sidebar-mini layout-fixed">
+      
+      {!hideSidebar && (
         <nav className="main-header navbar navbar-expand navbar-white navbar-light">
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -24,15 +31,12 @@ const Layout = ({ children }) => {
             </li>
           </ul>
         </nav>
+      )}
 
-        {/* SIDEBAR */}
-        <SidebarMenu />
+      {!hideSidebar && <SidebarMenu module={module} />}
 
-        {/* FULL CONTENT AREA */}
-       <div className="content-wrapper p-0">
-  <section className="content p-0 m-0 w-100 h-100">{children}</section>
-</div>
-
+      <div className="content-wrapper p-3">
+        <section className="content container-fluid">{children}</section>
       </div>
     </div>
   );
