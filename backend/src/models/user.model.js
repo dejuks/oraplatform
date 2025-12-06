@@ -13,7 +13,7 @@ export const findUserById = async (id) => {
 };
 
 // Create a new user
-export const createUser = async (data) => {
+export const createUser  = async (data) => {
   const {
     full_name,
     email,

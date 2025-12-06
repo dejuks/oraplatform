@@ -1,10 +1,13 @@
-import express from "express";
-import { getAllUsers } from "../controllers/user.controller.js";
+import { Router } from "express";
+import { createUserController, getAllUsers } from "../controllers/user.controller.js";
 import { authGuard } from "../middleware/auth.middleware.js";
 
-const router = express.Router();
+const router = Router();
 
-// Protect this route so only authenticated users can see the list
+// GET all users
 router.get("/", authGuard, getAllUsers);
+
+// CREATE new user
+router.post("/", authGuard, createUserController);
 
 export default router;
