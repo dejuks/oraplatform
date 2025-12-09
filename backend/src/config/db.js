@@ -1,12 +1,17 @@
-import pg from "pg";
-const { Pool } = pg;
+// src/db.js
+import pkg from "pg";
+const { Pool } = pkg;
 
+// Configure your database connection
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "ora_platform",
-  password: "9090",
-  port: 5432
+  user: "postgres",          // your DB user
+  host: "localhost",         // your DB host
+  database: "ora_platform",   // your DB name
+  password: "9090",  // your DB password
+  port: 5432,                // your DB port
 });
 
-export default pool;
+// Export a query function for easy use
+export default {
+  query: (text, params) => pool.query(text, params),
+};

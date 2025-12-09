@@ -7,8 +7,15 @@ import rolePermissionRoutes from "./routes/rolePermission.routes.js";
 import userRoutes from "./routes/user.routes.js";
 
 import moduleRoutes from "./routes/module.routes.js";
+import manuscriptRoutes from "./modules/journal/routes/manuscriptRoutes.js";
+
+import bodyParser from "body-parser";
+
 import cors from "cors"; // ✅ Import cors
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cors({ origin: "http://localhost:3000" }));
 // Middleware
 app.use(express.json()); // for parsing JSON requests
@@ -22,6 +29,7 @@ app.post("/logout", (req, res) => {
   // Optionally: add token to blacklist if you maintain one
   return res.status(200).json({ message: "Logged out successfully" });
 });
+
 app.use("/api/users", userRoutes);
 // Health check route
 app.get("/", (req, res) => {
@@ -32,6 +40,6 @@ app.use("/api/departments", departmentRoutes);
 app.use("/api/roles", roleRoutes);
 app.use("/api/permissions", permissionRoutes);
 app.use("/api/role-permissions", rolePermissionRoutes);
-
+app.use("/api/manuscripts", manuscriptRoutes);
 app.use("/api/modules", moduleRoutes); // <--- public, no auth
 export default app; // export the Express app
