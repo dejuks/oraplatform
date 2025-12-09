@@ -13,7 +13,7 @@ const SidebarMenu = ({ module }) => {
         name: "User Management",
         subMenu: [
           { name: "List Users", path: "/admin/users" },
-          { name: "Add User", path: "/admin/users/add" },
+          { name: "Add User", path: "/users/add" },
           { name: "Roles", path: "/admin/roles" },
           { name: "Permissions", path: "/admin/permissions" },
         ],
@@ -25,6 +25,74 @@ const SidebarMenu = ({ module }) => {
       { name: "Dashboard", path: "/journal" },
       { name: "Articles", path: "/journal/articles" },
       { name: "Reports", path: "/journal/reports" },
+      {
+        name: "Manuscripts",
+        subMenu: [
+          { name: "Submit Manuscript", path: "create-manuscrip" },
+          { name: "List Submissions", path: "/journal/manuscripts" },
+          { name: "Upload Revision", path: "/journal/manuscripts/revision" },
+        ],
+      },
+      {
+        name: "Reviews",
+        subMenu: [
+          { name: "Assigned Reviews", path: "/journal/reviews/assigned" },
+          { name: "Submit Review", path: "/journal/reviews/submit" },
+          { name: "Review History", path: "/journal/reviews/history" },
+        ],
+      },
+      {
+        name: "Editorial Decisions",
+        subMenu: [
+          { name: "Pending Decisions", path: "/journal/decisions/pending" },
+          { name: "Final Decisions", path: "/journal/decisions/final" },
+        ],
+      },
+      {
+        name: "Journal Management",
+        subMenu: [
+          { name: "Finalize Manuscripts", path: "/journal/journal/finalize" },
+          { name: "Assign DOI/ISSN", path: "/journal/journal/metadata" },
+          { name: "Publication Dashboard", path: "/journal/journal/dashboard" },
+        ],
+      },
+      {
+        name: "Workflow & SLA",
+        subMenu: [
+          { name: "Monitor Workflow", path: "/journal/workflow/monitor" },
+          { name: "Plagiarism Checks", path: "/journal/workflow/plagiarism" },
+          { name: "Notifications & Alerts", path: "/journal/workflow/notifications" },
+        ],
+      },
+    ],
+    library: [
+      { name: "Dashboard", path: "/library" },
+      {
+        name: "Books",
+        subMenu: [
+          { name: "List Books", path: "/library/books" },
+          { name: "Add Book", path: "/library/books/add" },
+          { name: "Categories", path: "/library/books/categories" },
+        ],
+      },
+      {
+        name: "Members",
+        subMenu: [
+          { name: "List Members", path: "/library/members" },
+          { name: "Add Member", path: "/library/members/add" },
+          { name: "Membership Types", path: "/library/members/types" },
+        ],
+      },
+      {
+        name: "Transactions",
+        subMenu: [
+          { name: "Issue Books", path: "/library/transactions/issue" },
+          { name: "Return Books", path: "/library/transactions/return" },
+          { name: "Transaction History", path: "/library/transactions/history" },
+        ],
+      },
+      { name: "Reports", path: "/library/reports" },
+      { name: "Settings", path: "/library/settings" },
     ],
   };
 
@@ -43,7 +111,10 @@ const SidebarMenu = ({ module }) => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <aside
+      className="main-sidebar sidebar-dark-primary elevation-4"
+      style={{ display: "flex", flexDirection: "column", height: "100vh" }}
+    >
       <div className="sidebar d-flex flex-column" style={{ flex: 1 }}>
         <nav className="mt-2 flex-grow-1">
           <ul
@@ -65,7 +136,12 @@ const SidebarMenu = ({ module }) => {
                       className={`nav-link ${
                         openMenus[item.name] ? "active" : ""
                       }`}
-                      style={{ cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                      style={{
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
                       onClick={() => toggleMenu(item.name)}
                     >
                       <span>{item.name}</span>
@@ -113,19 +189,68 @@ const SidebarMenu = ({ module }) => {
 
       <style>
         {`
-          .fa-angle-left.rotate {
-            transform: rotate(-90deg);
+          /* Sidebar background */
+          .sidebar {
+            background-color: #ffffff; /* White background */
+          }
+
+          /* Main menu links */
+          .nav-sidebar .nav-link {
+            color: #000000; /* Black text */
+            font-weight: 500;
+            transition: all 0.3s;
+          }
+
+          /* Active link */
+          .nav-sidebar .nav-link.active {
+            background-color: #3c8dbc; /* Primary color */
+            color: #fff;
+          }
+
+          /* Hover effect */
+          .nav-sidebar .nav-link:hover {
+            background-color: #367fa9;
+            color: #fff;
+          }
+
+          /* Submenu treeview */
+          .nav-sidebar .nav-treeview {
+            padding-left: 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+          }
+
+          .nav-item.menu-open > .nav-treeview {
+            max-height: 500px; /* Show submenu */
+          }
+
+          /* Submenu links */
+          .nav-sidebar .nav-treeview .nav-link {
+            color: #000000;
+            font-size: 0.95rem;
+          }
+
+          /* Submenu active */
+          .nav-sidebar .nav-treeview .nav-link.active {
+            color: #fff;
+            font-weight: 600;
+          }
+
+          /* Angle icon for collapsible menus */
+          .nav-sidebar .nav-link i.right.fas.fa-angle-left {
             transition: transform 0.3s;
           }
-          .nav-treeview .nav-link p {
-            padding-left: 20px;
+
+          /* Rotate arrow when menu is open */
+          .nav-item.menu-open > .nav-link i.right.fas.fa-angle-left {
+            transform: rotate(-90deg);
           }
-          .nav-link.active {
-            background-color: #1e3a8a;
-            color: white;
-          }
-          .nav-link.active p {
-            color: white;
+
+          /* Badge style */
+          .badge {
+            font-size: 0.7rem;
+            font-weight: 500;
           }
         `}
       </style>

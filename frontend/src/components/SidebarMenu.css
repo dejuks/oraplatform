@@ -1,70 +1,91 @@
-/* Sidebar background */
+/* ------------------------------
+   SUPER DARK MODERN SIDEBAR THEME
+------------------------------- */
+
+/* Sidebar background – very dark */
 .sidebar {
-  background-color: #1e282c; /* Darker sidebar */
+  background-color: #0f0f0f !important;  /* deep black */
+  color: #dcdcdc;
 }
 
 /* Main menu links */
 .nav-sidebar .nav-link {
-  color: #c2c7d0;
+  color: #b3b3b3;
   font-weight: 500;
-  transition: all 0.3s;
+  padding: 10px 12px;
+  transition: all 0.25s ease-in-out;
 }
 
-/* Active link */
-.nav-sidebar .nav-link.active {
-  background-color: #3c8dbc; /* Highlight active menu */
-  color: #fff;
-}
-
-/* Hover effect */
+/* Hover effect – smooth dark blue glow */
 .nav-sidebar .nav-link:hover {
-  background-color: #367fa9;
-  color: #fff;
+  background-color: #1a2332;  /* deep navy */
+  color: #ffffff;
 }
 
-/* Submenu treeview */
+/* Active menu link */
+.nav-sidebar .nav-link.active {
+  background-color: #0a59a0; /* strong blue highlight */
+  color: #ffffff;
+  font-weight: 600;
+  border-left: 3px solid #4da3ff; /* active border indicator */
+}
+
+/* Treeview (submenu container) */
 .nav-sidebar .nav-treeview {
-  padding-left: 15px; /* Indent */
-  transition: all 0.3s;
+  background-color: #131313; /* deep dark submenu */
+  padding-left: 18px;
+  border-left: 1px solid #1f1f1f;
+  transition: max-height 0.3s ease-in-out;
 }
 
 /* Submenu links */
 .nav-sidebar .nav-treeview .nav-link {
-  color: #b8c7ce;
-  font-size: 0.95rem;
+  color: #9aa0a6;
+  font-size: 0.93rem;
+  padding: 8px 10px;
+}
+
+/* Submenu hover */
+.nav-sidebar .nav-treeview .nav-link:hover {
+  background-color: #1d2b3b;
+  color: #fff;
 }
 
 /* Submenu active */
 .nav-sidebar .nav-treeview .nav-link.active {
-  color: #fff;
-  font-weight: 600;
+  color: #ffffff;
+  background-color: #0a59a0;
+  border-radius: 4px;
 }
 
 /* Submenu icons */
 .nav-sidebar .nav-treeview .nav-icon {
   font-size: 0.8rem;
+  color: #8b8b8b;
 }
 
-/* Angle icon for collapsible menus */
-.nav-sidebar .nav-link i.right.fas.fa-angle-left {
-  transition: transform 0.3s;
+/* Angle icons for menu collapse */
+.nav-sidebar .nav-link i.right {
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Rotate arrow when menu is open */
-.nav-item.menu-open > .nav-link i.right.fas.fa-angle-left {
+/* Rotate arrow when open */
+.nav-item.menu-open > .nav-link i.right {
   transform: rotate(-90deg);
 }
 
-/* Badge style */
-.badge {
-  font-size: 0.7rem;
-  font-weight: 500;
-}
+/* Smooth open/close animation */
 .nav-sidebar .nav-treeview {
   max-height: 0;
   overflow: hidden;
 }
 
 .nav-item.menu-open > .nav-treeview {
-  max-height: 500px; /* enough to show submenu */
+  max-height: 600px;
+}
+
+/* Badges */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
 }

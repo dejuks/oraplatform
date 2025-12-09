@@ -150,7 +150,7 @@ function Landing() {
           </div>
         </div>
       </nav>
-
+<br/>
       {/* Hero Section */}
       <section id="home" className="hero-section">
         <div className="hero-overlay">
