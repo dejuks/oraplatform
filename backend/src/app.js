@@ -8,6 +8,8 @@ import userRoutes from "./routes/user.routes.js";
 
 import moduleRoutes from "./routes/module.routes.js";
 import manuscriptRoutes from "./modules/journal/routes/manuscriptRoutes.js";
+import authorRouter from "./modules/library/routes/authorRoutes.js";
+
 
 import bodyParser from "body-parser";
 
@@ -41,5 +43,6 @@ app.use("/api/roles", roleRoutes);
 app.use("/api/permissions", permissionRoutes);
 app.use("/api/role-permissions", rolePermissionRoutes);
 app.use("/api/manuscripts", manuscriptRoutes);
+app.use("/api/authors", authorRouter);
 app.use("/api/modules", moduleRoutes); // <--- public, no auth
 export default app; // export the Express app
