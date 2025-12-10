@@ -20,7 +20,17 @@ import AddDepartment from "./pages/Departments/AddDepartment";
 // Modules
 import JournalDashboard from "./modules/Journal/JournalDashboard";
 import EbookDashboard from "./modules/Ebooks/EbookDashboard";
+
+// library pages
+
 import LibraryDashboard from "./modules/Library/LibraryDashboard";
+import ListBooks from "./modules/Library/ListBooks";
+ 
+import AuthorList from "./modules/Library/pages/AuthorList";
+import CreateAuther from "./modules/Library/pages/CreateAuthor";
+import EditAuthor from "./modules/Library/pages/EditAuthor";
+import AuthorDetail from "./modules/Library/pages/AuthorDetail";  
+
 import WikipediaDashboard from "./modules/Wikipedia/WikipediaDashboard";
 import RepositoryDashboard from "./modules/Repository/RepositoryDashboard";
 import ResearchersDashboard from "./modules/Researchers/ResearchersDashboard";
@@ -69,7 +79,19 @@ function App() {
 
 
         <Route path="/ebooks" element={<EbookDashboard />} />
+
+        // Library Management
         <Route path="/library" element={<LibraryDashboard />} />
+        <Route path="/library/author/books" element={<ListBooks />} />
+        <Route path="/library/authors" element={<AuthorList />} />
+        <Route path="/library/author/create" element={<CreateAuther />} />
+        <Route path="/library/author/edit/:id" element={<EditAuthor />} />
+        <Route path="/library/author/:id" element={<AuthorDetail />} />
+
+
+        
+
+
         <Route path="/wikipedia" element={<WikipediaDashboard />} />
         <Route path="/repository" element={<RepositoryDashboard />} />
         <Route path="/researchers" element={<ResearchersDashboard />} />
